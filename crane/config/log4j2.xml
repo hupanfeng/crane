@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d] [%-5p] [%t] [%C (%F:%L)] %n%m%n" />
+		</Console>
+		<File name="crane" fileName="crane.log" append="true">
+			<PatternLayout pattern="[%d] [%-5p] [%t] [%C-:%L] %n%m%n" />
+		</File>
+	</appenders>
+	<loggers>
+		<logger name="org.apache.log4j.xml" level="debug" />
+		<root level="debug">
+			<appender-ref ref="STDOUT" />
+		</root>
+		<root level="debug">
+			<appender-ref ref="crane" />
+			<appender-ref ref="STDOUT" />
+		</root>
+	</loggers>
+</configuration>

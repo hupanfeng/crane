@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!ELEMENT configuration (server?, client?)>
+<!ATTLIST configuration
+monitorInterval CDATA #IMPLIED
+>
+
+<!ELEMENT server (service+)>
+<!ATTLIST server
+name CDATA #REQUIRED
+>
+
+<!ELEMENT service EMPTY>
+<!ATTLIST service
+name CDATA #REQUIRED
+ip CDATA #REQUIRED
+port CDATA #REQUIRED
+serverType CDATA #REQUIRED
+bufferSize CDATA #IMPLIED
+idleTime CDATA #IMPLIED
+>
+
+<!ELEMENT client EMPTY>
+<!ATTLIST client
+name CDATA #REQUIRED
+ip CDATA #REQUIRED
+port CDATA #REQUIRED
+>

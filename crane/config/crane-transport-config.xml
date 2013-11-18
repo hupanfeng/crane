@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//hdd.com//DTD Config 1.0//EN" "http://hdd.com/dtd/crane-transport-config.dtd">
+<configuration monitorInterval="30">
+	<server effective="true">
+		<service name="transport" ip="localhost" port="11212" />
+	</server>
+	<client>
+		<master name="data" ip="localhost" port="11211" />
+	</client>
+</configuration>   
