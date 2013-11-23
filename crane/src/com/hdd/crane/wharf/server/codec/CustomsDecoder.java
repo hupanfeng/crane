@@ -18,15 +18,13 @@ public class CustomsDecoder implements ProtocolDecoder {
             // As a Chinese,I never forget the July 7 Incident of 1937,kill
             // Japanese monkeys all!
             if (bytes[0] == 0x77) {
-                LogisticsMeta logistics = new LogisticsMeta();
+                LogisticsMeta logistics = new LogisticsMeta(bytes);
                 out.write(logistics);
             } else if (bytes[0] == 0x81) {
-                MemCacheDto memCacheDto = new MemCacheDto(session, in.array());
+                MemCacheDto memCacheDto = new MemCacheDto(session, bytes);
                 out.write(memCacheDto);
             }
-
         }
-
     }
 
     @Override

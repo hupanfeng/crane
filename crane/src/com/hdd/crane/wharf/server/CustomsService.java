@@ -1,5 +1,6 @@
 package com.hdd.crane.wharf.server;
 
+import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 
 import com.hdd.crane.server.BaseService;
@@ -13,10 +14,18 @@ import com.hdd.crane.wharf.server.handler.CustomsServiceHandler;
  * @since 2013-11-13
  */
 public class CustomsService extends BaseService {
+    private final IoHandler hanlder = new CustomsServiceHandler();
 
     @Override
-    protected void innerInit() throws Exception {
+    public void innerInit() throws Exception {
         server.getFilterChain().addLast("codec", new ProtocolCodecFilter(new CustomsCodecFactory()));
-        server.setHandler(new CustomsServiceHandler());
+        server.setHandler(hanlder);
+        ((CustomsServiceHandler) hanlder).init();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        ((CustomsServiceHandler) hanlder).stop();
     }
 }

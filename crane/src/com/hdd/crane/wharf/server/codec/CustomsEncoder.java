@@ -4,12 +4,19 @@ import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoderAdapter;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
 
-public class CustomsEncoder extends ProtocolEncoderAdapter{
+import com.hdd.crane.logistics.LogisticsMeta;
+import com.hdd.crane.memcache.MemCacheDto;
+
+public class CustomsEncoder extends ProtocolEncoderAdapter {
 
     @Override
     public void encode(IoSession session, Object message, ProtocolEncoderOutput out) throws Exception {
-        // TODO Auto-generated method stub
-
+        if (null != message && message instanceof LogisticsMeta) {
+            LogisticsMeta logisticsMeta = (LogisticsMeta) message;
+            out.write(logisticsMeta.getBytes());
+        } else if (null != message && message instanceof MemCacheDto) {
+            MemCacheDto memCacheDto = (MemCacheDto) message;
+            out.write(memCacheDto.getBytes());
+        }
     }
-
 }

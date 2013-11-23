@@ -56,7 +56,7 @@ public class WharfServiceHandler implements IoHandler {
     public void messageReceived(IoSession session, Object message) throws Exception {
         log.debug("Received one message.");
         if (message instanceof MemCacheDto) {
-            Conveyor.requestQueue.offer((MemCacheDto) message);
+            Conveyor.getInstance().putRequest((MemCacheDto) message);
         }
     }
 
@@ -70,7 +70,7 @@ public class WharfServiceHandler implements IoHandler {
         @Override
         public void run() {
             try {
-                MemCacheDto response = Conveyor.responseQueue.take();
+                MemCacheDto response = Conveyor.getInstance().takeResponse();
                 response.getSession().write(response);
             } catch (InterruptedException e) {
                 // do nothing

@@ -6,6 +6,8 @@ import com.hdd.crane.logistics.LogisticsMeta;
 
 public class MemCacheDto {
 
+    // the
+    private long id;
     private IoSession session;
     private volatile boolean isHeaderParsed = false;
     private byte[] bytes;
@@ -14,6 +16,7 @@ public class MemCacheDto {
     private LogisticsMeta logistics;
 
     public MemCacheDto() {
+
     }
 
     public MemCacheDto(IoSession session, byte[] bytes) {
@@ -205,6 +208,14 @@ public class MemCacheDto {
 
     public void setLogistics(LogisticsMeta logistics) {
         this.logistics = logistics;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
 }
