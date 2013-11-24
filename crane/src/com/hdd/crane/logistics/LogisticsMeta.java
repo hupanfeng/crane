@@ -16,6 +16,10 @@ public class LogisticsMeta {
     private byte[] port;
 
     private final CopyOnWriteArraySet<IoSession> sessions = new CopyOnWriteArraySet<IoSession>();
+    
+    public LogisticsMeta(){
+        
+    }
 
     public LogisticsMeta(byte[] bytes) {
         this.bytes = bytes;
